@@ -8,21 +8,21 @@ public class ZRotationButtonsUIC : MonoBehaviour
 
     public void RotateZUpLeft()
     {
-        controller.Rotate("Z", true, true);
+        controller.RequestRotation("Z", true, true);
     }
 
     public void RotateZDownLeft()
     {
-        controller.Rotate("Z", true, false);
+        controller.RequestRotation("Z", true, false);
     }
 
     public void RotateZUpRight()
     {
-        controller.Rotate("Z", false, true);
+        controller.RequestRotation("Z", false, true);
     }
 
     public void RotateZDownRight()
     {
-        controller.Rotate("Z", false, false);
+        controller.RequestRotation("Z", false, false);
     }
 }

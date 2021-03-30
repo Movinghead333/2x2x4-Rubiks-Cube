@@ -8,21 +8,21 @@ public class YRotationButtonsUIC : MonoBehaviour
 
     public void RotateYUpLeft()
     {
-        controller.Rotate("Y", true, true);
+        controller.RequestRotation("Y", true, true);
     }
 
     public void RotateYDownLeft()
     {
-        controller.Rotate("Y", true, false);
+        controller.RequestRotation("Y", true, false);
     }
 
     public void RotateYUpRight()
     {
-        controller.Rotate("Y", false, true);
+        controller.RequestRotation("Y", false, true);
     }
 
     public void RotateYDownRight()
     {
-        controller.Rotate("Y", false, false);
+        controller.RequestRotation("Y", false, false);
     }
 }

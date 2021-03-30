@@ -8,21 +8,21 @@ public class XRotationButtonsUIC : MonoBehaviour
 
     public void RotateXUpLeft()
     {
-        controller.Rotate("X", true, true);
+        controller.RequestRotation("X", true, true);
     }
 
     public void RotateXDownLeft()
     {
-        controller.Rotate("X", true, false);
+        controller.RequestRotation("X", true, false);
     }
 
     public void RotateXUpRight()
     {
-        controller.Rotate("X", false, true);
+        controller.RequestRotation("X", false, true);
     }
 
     public void RotateXDownRight()
     {
-        controller.Rotate("X", false, false);
+        controller.RequestRotation("X", false, false);
     }
 }

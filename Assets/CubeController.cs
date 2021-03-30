@@ -7,6 +7,16 @@ public class CubeController : MonoBehaviour
     const int cubesSize = 16;
     public GameObject[] cubes = new GameObject[cubesSize];
 
+    Vector3 axisVector;
+    int angle;
+    bool up;
+    bool left;
+    string axis;
+
+    // store if the is a rotation currently being executed
+    bool isRotating;
+    int currentStep = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +30,21 @@ public class CubeController : MonoBehaviour
         }
     }
 
-    public void Rotate(string axis, bool left, bool up)
+    public void RequestRotation(string axis, bool left, bool up)
     {
-        Vector3 axisVector = Vector3.zero;
-        int angle = 0;
+        if (isRotating)
+        {
+            return;
+        }
+        else
+        {
+            isRotating = true;
+        }
+        this.axisVector = Vector3.zero;
+        this.angle = 0;
+        this.axis = axis;
+        this.up = up;
+        this.left = left;
         switch (axis)
         {
             case "X":
@@ -41,41 +62,59 @@ public class CubeController : MonoBehaviour
             default:
                 throw new System.Exception("Invalid Axis");
         }
-
-        for (int i = 0; i < cubesSize; i++)
-        {
-            switch(axis)
-            {
-                case "X":
-                    if (left)  {
-                        if (cubes[i].transform.position.x < 0) continue;
-                    } else {
-                        if (cubes[i].transform.position.x > 0) continue;
-                    }
-                    break;
-                case "Y":
-                    if (up) {
-                        if (cubes[i].transform.position.y < 0) continue;
-                    } else {
-                        if (cubes[i].transform.position.y > 0) continue;
-                    }
-                    break;
-                case "Z":
-                    if (left) {
-                        if (cubes[i].transform.position.z > 0) continue;
-                    } else {
-                        if (cubes[i].transform.position.z < 0) continue;
-                    }
-                    break;
-            }
-            
-            cubes[i].transform.RotateAround(transform.position, axisVector, angle);
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (currentStep < 90 && isRotating)
+        {
+            currentStep++;
+        } 
+        else
+        {
+            currentStep = 0;
+            isRotating = false;
+            return;
+        }
+
+        for (int i = 0; i < cubesSize; i++)
+        {
+            switch (axis)
+            {
+                case "X":
+                    if (left)
+                    {
+                        if (cubes[i].transform.position.x < 0) continue;
+                    }
+                    else
+                    {
+                        if (cubes[i].transform.position.x > 0) continue;
+                    }
+                    break;
+                case "Y":
+                    if (up)
+                    {
+                        if (cubes[i].transform.position.y < 0) continue;
+                    }
+                    else
+                    {
+                        if (cubes[i].transform.position.y > 0) continue;
+                    }
+                    break;
+                case "Z":
+                    if (left)
+                    {
+                        if (cubes[i].transform.position.z > 0) continue;
+                    }
+                    else
+                    {
+                        if (cubes[i].transform.position.z < 0) continue;
+                    }
+                    break;
+            }
+
+            cubes[i].transform.RotateAround(transform.position, axisVector, angle / 90);
+        }
     }
 }
