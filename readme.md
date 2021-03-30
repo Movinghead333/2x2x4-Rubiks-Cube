@@ -5,8 +5,8 @@
 
 ## Screenshots from the project ##
 
-![alt text](./Screenshots/1.png)
+![alt text](https://github.com/Movinghead333/2x2x4-Rubiks-Cube/blob/master/Screenshots/1.PNG?raw=true)
 
-![alt text](./Screenshots/2.png)
+![alt text](https://github.com/Movinghead333/2x2x4-Rubiks-Cube/blob/master/Screenshots/2.PNG?raw=true)
 
-![alt text](./Screenshots/3.png)
+![alt text](https://github.com/Movinghead333/2x2x4-Rubiks-Cube/blob/master/Screenshots/3.PNG?raw=true)
